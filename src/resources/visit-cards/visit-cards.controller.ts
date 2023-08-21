@@ -17,18 +17,23 @@ export class VisitCardsController {
     return this.visitCardsService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.visitCardsService.findOne(+id);
+  // @Get(':id')
+  // findOne(@Param('id') id: string) {
+  //   return this.visitCardsService.findOne(id);
+  // }
+
+  @Get(':name')
+  findOne(@Param('name') name: string) {
+    return this.visitCardsService.findByName(name);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateVisitCardDto: UpdateVisitCardDto) {
-    return this.visitCardsService.update(+id, updateVisitCardDto);
+    return this.visitCardsService.update(id, updateVisitCardDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.visitCardsService.remove(+id);
+    return this.visitCardsService.remove(id);
   }
 }
