@@ -52,8 +52,8 @@ export class VisitCardsService {
       gender,
       phone,
       address,
-      // owner,
-      // groups
+      owner,
+      groups
     }
     return this.cardRepository.save(visitCard);
   }
@@ -71,9 +71,51 @@ export class VisitCardsService {
   }
 
   async update(id: string, updateVisitCardDto: UpdateVisitCardDto) {
+    // destructure data
+    const {
+      first_name,
+      last_name,
+      gender,
+      phone,
+      address,
+      ownerId,
+      groupsIds
+    } = updateVisitCardDto
+    // load previous data
+    const card = await this.cardRepository.findOneBy({id});
+    if (!card) throw new NotFoundException(
+      `Visit card with id ${id} was not found.`
+    )
+    // const owner = card.owner;
+    // check if owner exists - if so load data else throw exception
+    const owner = await this.userRepository.findOneBy({id: ownerId});
+    if (ownerId && !owner) throw new NotFoundException(
+      `User with id ${ownerId} was not found.`
+    );
+    // check if groups exist - if so load data else throw exception
+    const groups: Group[] = [];
+    if (groupsIds) {
+      for (const groupId of groupsIds) {
+        const group = await this.groupRepository.findOneBy({ id: groupId });
+        if (!group) throw new NotFoundException(
+          `Group with id ${groupId} was not found.`
+        );
+        groups.push(group);
+      }
+    }
+    // gather data
+    const visitCard = {
+      first_name,
+      last_name,
+      gender,
+      phone,
+      address,
+      owner,
+      groups
+    }
     return this.cardRepository.save({
       id,
-      ... updateVisitCardDto
+      ... visitCard
     });
   }
 

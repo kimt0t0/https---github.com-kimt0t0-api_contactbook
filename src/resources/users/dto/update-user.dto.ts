@@ -6,5 +6,5 @@ export class UpdateUserDto {
     username: string;
     role?: Role;
     groupsIds: string[];
-    contactCardsIds: string[];
+    cardsIds: string[];
 }

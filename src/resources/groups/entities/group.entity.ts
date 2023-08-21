@@ -1,6 +1,6 @@
 import { User } from 'src/resources/users/entities/user.entity';
 import { VisitCard } from 'src/resources/visit-cards/entities/visit-card.entity';
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany, JoinTable } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany, JoinTable } from 'typeorm';
 
 @Entity()
 export class Group {
@@ -10,7 +10,7 @@ export class Group {
     @Column({ length: 70 })
     name: string;
 
-    @OneToMany(() => User, (user) => user.groups, {
+    @ManyToOne(() => User, (user) => user.groups, {
         cascade: true
     })
     owner: User;

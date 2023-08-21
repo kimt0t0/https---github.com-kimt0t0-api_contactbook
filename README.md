@@ -205,3 +205,11 @@ visit_cards_ids: \['bfb220c0-3ffa-11ee-a44c-5903ad09c801']
 ### MCD, relations et associations.
 
 Voire MCD en pièce-jointe.
+
+### Opérations d l'API: idempotentes ou pas ?
+
+1. Oui
+   Toutes les requêtes GET, PUT et DELETE de l'API sont idempotentes.
+
+2. Non
+   Toutes les requêtes POST.

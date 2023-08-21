@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { Role } from '../enums/Role.enum';
 import { Group } from 'src/resources/groups/entities/group.entity';
 import { VisitCard } from 'src/resources/visit-cards/entities/visit-card.entity';
@@ -21,15 +21,15 @@ export class User {
     })
     role: Role;
 
-    @ManyToOne(() => Group, (group) => group.owner, {
+    @OneToMany(() => Group, (group) => group.owner, {
         eager: true,
         nullable: true,
         cascade: ['insert', 'update']
     })
     groups: Group[];
 
-    @ManyToOne(() => VisitCard, (visitcard) => visitcard.owner, {
-        // eager: true,
+    @OneToMany(() => VisitCard, (visitcard) => visitcard.owner, {
+        eager: true,
         nullable: true,
         cascade: ['insert', 'update']
     })
