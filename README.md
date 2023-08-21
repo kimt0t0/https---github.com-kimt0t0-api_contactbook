@@ -30,6 +30,8 @@ npm run dev
 npm run dev
 ```
 
+3. You can test the API with an API software such as Postman or Insomnia. Send JSON formatted data.
+
 ## Documentation
 
 [Orkhan Books for TypeOrm]()

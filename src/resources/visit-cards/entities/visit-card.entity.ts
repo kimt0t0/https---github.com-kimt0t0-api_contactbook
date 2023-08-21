@@ -1,5 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany } from "typeorm";
 import { Gender } from "../enums/Gender.enum";
+import { User } from "src/resources/users/entities/user.entity";
+import { Group } from "src/resources/groups/entities/group.entity";
 
 @Entity('visit-cards')
 export class VisitCard {
@@ -24,4 +26,15 @@ export class VisitCard {
 
     @Column({ length: 256 })
     address: string;
+
+    @OneToMany(() => User, (user) => user.visitcards, {
+        cascade: true
+    })
+    owner: User;
+
+    @ManyToMany(() => Group, (group) => group.visitcards, {
+        cascade: ['insert', 'update'],
+        nullable: true
+    })
+    groups: Group[];
 }
