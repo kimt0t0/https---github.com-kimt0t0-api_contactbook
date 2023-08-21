@@ -71,7 +71,10 @@ export class VisitCardsService {
   }
 
   async update(id: string, updateVisitCardDto: UpdateVisitCardDto) {
-    return `This action updates a #${id} visitCard`;
+    return this.cardRepository.save({
+      id,
+      ... updateVisitCardDto
+    });
   }
 
   async remove(id: string) {
