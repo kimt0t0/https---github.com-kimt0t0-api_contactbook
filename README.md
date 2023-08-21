@@ -201,3 +201,5 @@ Content-Type: application/hal+json
 visit_cards_ids: \['bfb220c0-3ffa-11ee-a44c-5903ad09c801']
 
 ### MCD, relations et associations.
+
+Voire MCD en pièce-jointe.
