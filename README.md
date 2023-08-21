@@ -209,7 +209,9 @@ Voire MCD en pièce-jointe.
 ### Opérations d l'API: idempotentes ou pas ?
 
 1. Oui
-   Toutes les requêtes GET, PUT et DELETE de l'API sont idempotentes.
+
+Toutes les requêtes GET, PUT et DELETE de l'API sont idempotentes.
 
 2. Non
-   Toutes les requêtes POST.
+
+Toutes les requêtes POST.
