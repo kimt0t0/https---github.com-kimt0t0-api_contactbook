@@ -6,9 +6,11 @@ import { DataSource } from 'typeorm';
 import { VisitCardsModule } from './resources/visit-cards/visit-cards.module';
 import { UsersModule } from './resources/users/users.module';
 import { GroupsModule } from './resources/groups/groups.module';
+import { AuthModule } from './resources/auth/auth.module';
 
 @Module({
   imports: [
+    AuthModule,
     UsersModule,
     VisitCardsModule,
     GroupsModule,
